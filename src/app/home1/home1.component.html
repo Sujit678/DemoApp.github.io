@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<div class="bg" style="background-image: url('assets/back.jpg');">
+    
+    <div class="container" style="padding-top: 10rem; padding-bottom: 12.6rem;">
+        <div class="row">
+            <div class="col-sm-9" style="color: whitesmoke;">
+                <h1 style="padding-left: 3rem; font-style: italic; font-weight: bold; font-family: verdana;">I'm looking for..</h1><br>
+                <input class="form-control" type="text" name="job" placeholder="Enter a Job Description "><br>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <input type="checkbox" id="chf" name="fulltime"> Full Time
+                    </div>
+                    <div class="col-sm-5">
+                        <input type="checkbox" id="chp" name="fulltime"> Part Time / Casual / Freelance
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control">
+                            <option value="" disabled selected hidden>Select your Location</option>
+                            <option *ngFor="let loc of location" [value]="loc.id">{{loc.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3" style="padding-left: 5rem; padding-top: 5rem;">
+                <button type="button" class="btn btn-md py-1.5 px-4"><i class="fa fa-search" aria-hidden="true" style="padding-right: 4px;"></i><span><b>search</b></span></button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 4rem;">
+            <button type="button" class="btn btn-md py-1.5 px-4" style="margin: auto;" (click)="openForm()"><b>Register</b></button>
+        </div>
+    </div>
+</div>

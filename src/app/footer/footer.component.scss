@@ -1,0 +1,26 @@
+.footer{
+    background-color: #ececec;
+}
+
+img{
+    height: 22px;
+    width: 22px;
+}
+
+.container{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+button{
+    border: solid 1px #56beff;
+}
+
+@media(min-width: 280px) and (max-width: 319px){
+    #b2{
+        margin-right: 4rem;
+    }
+    #i1{
+        margin-left: -4rem;
+    }
+}

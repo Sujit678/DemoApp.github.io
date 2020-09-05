@@ -1,0 +1,106 @@
+<div class="card">
+    <div class="card-header" style="background-color: #56beff; color: whitesmoke;">
+        <h4>{{title}}</h4>
+    </div>
+
+    <div class="card-body">
+        <form [formGroup]="registrationForm" (ngSubmit)="registrationForm.valid && onSubmit()">
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <img [src]="urls" alt="Profile photo" class="form-control"><br>
+                    <input type="file" class="form-control" formControlName="file" (change)="uploadPhoto($event)" style="color: transparent; border: transparent;">
+                </div>
+
+                <div class="col-sm-8">
+
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="First Name"
+                                    formControlName="firstName" required>
+                                <div class="error" *ngIf="firstName.invalid && firstName.dirty">
+                                    <span *ngIf="firstName.errors.required">Name is required</span>
+                                    <span *ngIf="firstName.errors?.maxlength">Only
+                                        {{firstName.errors.maxlength.requiredLength}} charecters are allowed</span>
+                                    <span *ngIf="firstName.errors.pattern">Only alphabets are allowed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Last Name"
+                                    formControlName="lastName">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Email" formControlName="email">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="number" placeholder="(541) 754-3010"
+                            formControlName="contactNo">
+                    </div>
+
+                    <div class="form-group">
+                        Age: <mat-slider min="20" max="60" step="2" thumbLabel color="primary"></mat-slider>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" formControlName="state">
+                            <option value="" disabled selected hidden>State</option>
+                            <option *ngFor="let st of state" [value]="st.id">{{st.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" formControlName="country">
+                            <option value="" disabled selected hidden>Country</option>
+                            <option *ngFor="let count of country" [value]="count.id">{{count.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" formControlName="address">
+                            <option value="" disabled selected hidden>Address</option>
+                            <option *ngFor="let add of address" [value]="add.id">{{add.name}}</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <input class="form-control" type="text" placeholder="tags" formControlName="contactNo">
+                    </div> -->
+                    <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipList aria-label="Fruit selection">
+                          <mat-chip *ngFor="let inter of interests" [selectable]="selectable"
+                                   [removable]="removable" (removed)="remove(inter)">
+                            {{inter.name}}
+                            <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+                          </mat-chip>
+                          <input placeholder="tags"
+                                 [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                      </mat-form-field>
+
+                    <div class="form-group">
+                        <input type="checkbox" name="news"> subscribe to newsletter
+                    </div>
+
+                    <div class="button-group" style="float: right;">
+                        <button type="button" class="btn btn-md py-1.5 px-4 btn-outline-dark" (click)="close()"
+                            style="margin-right: 20px;">Cancel</button>
+
+                        <button type="submit" class="btn btn-md py-0 px-4 btn-primary" [disabled]="registrationForm.invalid" [mat-dialog-close]><a class="nav-link"
+                                routerLink="/profile" routerLinkActive="active"></a>Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
